@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <h2 class="text-center text-2xl font-bold py-3">{{list.name}}</h2>
+  <form method="post" action="">
+    {% csrf_token %}
+    <div class="flex flex-col justify-center m-auto my-3 px-5">
+      {% for item in list.item_set.all %}
+        {% if not item.complete %}
+          <div class="flex flex-row justify-between">
+            {{item.text}}
+            <input type="checkbox" name="c{{item.id}}" value="clicked">
+          </div>
+        {% else %}
+          <div class="flex flex-row justify-between">
+            {{item.text}}
+            <input type="checkbox" name="c{{item.id}}" value="clicked" checked>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="flex flex-row justify-between px-5 gap-2">
+      <input type="text" name="new" class="w-full">
+      <button type="submit", name="newItem", value="newItem" class="w-32">Add Item</button>
+    </div>
+    <button type="submit", name="save", value="save" class="block m-auto my-5 text-lg font-medium px-6 py-2">Save</button>
+  </form>
+{% endblock %}

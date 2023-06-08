@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style type="text/css">
+    body {
+      font-family:'Courier New', Courier, monospace;
+    }
+    .title {
+      margin-left: 240px;
+    }
+    body a {
+      color: #818181;
+      text-decoration: none;
+    }
+    body label {
+      padding: 5px 5px;
+    }
+    body .helptext {
+      font-weight: 200;
+      font-size: 0.8rem;
+    }
+    body button {
+      padding: 5px 5px;
+      border: #111 solid 1px;
+    }
+    body button:hover {
+      color: #f1f1f1;
+      border: white solid 1px;
+    }
+    a:hover {
+      color: #f1f1f1;
+    }
+    .navbar {
+      height: 100%;
+      width: 230px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow: hidden;
+      padding-top: 20px;
+    }
+    .navbar a {
+      padding: 10px 10px;
+      display: block;
+      font-size: 20px;
+    }
+    #content {
+      margin-left: 240px;
+      padding: 10px;
+    }
+  </style>
+  <title>To Do Lists Tutorial</title>
+</head>
+<body>
+  <div class="navbar">
+    <a href="/">Home</a>
+    {% if user.is_authenticated %}
+      <a href="/create">Create New List</a>
+      <a href="/logout">Logout</a>
+    {% else %}
+      <a href="/login">Login</a>
+      <a href="/registration">Sign Up</a>
+    {% endif %}
+  </div>
+  <h1 class="title font-black text-4xl text-center py-5" >To do List Tutorial</h1>
+  <div id="content">
+    <div class="w-1/2 m-auto p-5 min-h-80 border-solid border-2 border-black bg-zinc-300">
+        {% block content %}
+        {% endblock %}
+    </div>
+  </div>
+
+</body>
+</html>

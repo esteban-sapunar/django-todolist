@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <h2 class="text-center text-2xl font-bold py-3">Create new List</h2>
+  <form method="post" action="">
+    {% csrf_token %}
+    <div class="flex flex-row justify-center m-auto my-3 px-5">
+      {{form}}
+    </div>
+    <button type="submit" class="block m-auto my-5 text-lg font-medium px-6 py-2">Create</button>
+  </form>
+{% endblock %}
